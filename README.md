@@ -16,14 +16,14 @@ The system uses two Priority Queues to efficiently manage auctions and bids:
 ## Problem Statement
 Develop a console-based online auction system that supports real-time highest-bid lookup and efficient auction closing using Priority Queues while following Object-Oriented Programming principles.
 
-# Objectives
+## Objectives
 - Implement an online auction system in Java.
 - Demonstrate the Priority Queue (Heap) data structure.
 - Implement real-time highest-bid tracking.
 - Implement automatic, time-based auction closing.
 - Apply OOP concepts using classes and objects.
 
-# Features
+## Features
 - Create item auctions with base price and duration
 - Place bids (validated against current highest bid)
 - Instantly view the current highest bid
@@ -32,7 +32,7 @@ Develop a console-based online auction system that supports real-time highest-bi
 - Custom Comparable-based heap ordering
 - Single Java source file using multiple classes
 
-# Technologies Used
+## Technologies Used
 - Language: Java
 - IDE: Visual Studio Code
 - Version Control: Git
@@ -44,7 +44,7 @@ The application maintains two priority queues:
 - **Bid Heap (max-heap, per auction)** — Highest bid always on top; `peek()` is O(1), `offer()` is O(log n).
 - **Closing Scheduler (min-heap, in AuctionManager)** — Ordered by `endTime`; always knows which auction expires next without scanning every auction; `poll()` is O(log n).
 
-# Project Structure
+## Project Structure
 ```
 OnlineAuctionSystem
 │
@@ -62,9 +62,34 @@ OnlineAuctionSystem
     └── Main.java
 ```
 
+## Classes Used
+Although the project uses a single source file (`Main.java`), it contains five classes:
 
-<img width="1335" height="1785" alt="FlowDiagram_AuctionSystem" src="https://github.com/user-attachments/assets/705c93a6-db42-4e75-b300-2ee840a85f9f" />
-auction.
+**Main**
+- Creates the `AuctionManager`, an `Item`, and an `Auction`
+- Simulates multiple bids being placed
+- Waits for the auction timer to expire
+- Triggers auction closing and displays the result
+
+**User**
+Represents any person using the system (bidder/seller/admin).
+- Fields: `userId`, `name`, `email`, `role`
+
+**Item**
+Represents the product being auctioned.
+- Fields: `itemId`, `title`, `description`, `sellerId`, `basePrice`, `status`
+
+**Bid**
+Represents a single bid placed by a user, `Comparable<Bid>` so it can sit directly in the bid heap.
+- Orders by amount descending (max-heap); ties broken by earlier timestamp
+
+**Auction**
+Represents one live auction for one item, `Comparable<Auction>` so it can sit in the closing scheduler.
+- Methods: `placeBid()`, `getHighestBid()`
+- Orders by `endTime` ascending (min-heap)
+
+**AuctionManager**
+Central engine controlling every auction.
 - Fields: `activeAuctions` (HashMap for O(1) lookup by id), `closingScheduler` (min-heap by endTime)
 - Methods: `createAuction()`, `placeBid()`, `closeExpiredAuctions()`, `getTopBid()`
 
@@ -119,34 +144,7 @@ SOLD! Vintage Cricket Bat -> U2 at 900.0
 - Experience with Java Object-Oriented Programming.
 - Git and GitHub version control.
 - Low-Level Design (LLD) implementation using classes and objects.
-## Classes Used
-Although the project uses a single source file (`Main.java`), it contains five classes:
 
-**Main**
-- Creates the `AuctionManager`, an `Item`, and an `Auction`
-- Simulates multiple bids being placed
-- Waits for the auction timer to expire
-- Triggers auction closing and displays the result
-
-**User**
-Represents any person using the system (bidder/seller/admin).
-- Fields: `userId`, `name`, `email`, `role`
-
-**Item**
-Represents the product being auctioned.
-- Fields: `itemId`, `title`, `description`, `sellerId`, `basePrice`, `status`
-
-**Bid**
-Represents a single bid placed by a user, `Comparable<Bid>` so it can sit directly in the bid heap.
-- Orders by amount descending (max-heap); ties broken by earlier timestamp
-
-**Auction**
-Represents one live auction for one item, `Comparable<Auction>` so it can sit in the closing scheduler.
-- Methods: `placeBid()`, `getHighestBid()`
-- Orders by `endTime` ascending (min-heap)
-
-**AuctionManager**
-Central engine controlling every
 ## Author
 Laveena
 
@@ -154,7 +152,3 @@ Electrical and Electronics Engineering
 
 ## License
 This project is developed for educational and academic purposes.
-
-
-
-

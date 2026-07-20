@@ -1,0 +1,8 @@
+Created: Auction[A1] Vintage Cricket Bat
+Bid accepted: U1 bid 600.0
+Bid rejected: must be higher than current highest bid (600.0)
+Bid accepted: U3 bid 800.0
+Bid rejected: must be higher than current highest bid (800.0)
+Bid accepted: U2 bid 900.0
+Current top bid: U2 bid 900.0
+SOLD! Vintage Cricket Bat -> U2 at 900.0
