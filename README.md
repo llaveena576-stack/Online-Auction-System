@@ -1,5 +1,3 @@
-# Online-Auction-System
-Online Auction System - Java project implementing LLD with Priority Queue (Max-Heap for highest bid tracking, Min-Heap for auction auto-closing)
 # Online Auction System using Priority Queue
 
 A simple console-based Java Online Auction System that demonstrates real-time highest-bid tracking and time-based auction closing using the Priority Queue (Heap) data structure. The project is designed as a Low-Level Design (LLD) implementation showcasing Object-Oriented Programming (OOP) concepts such as classes, objects, encapsulation, and object composition.
